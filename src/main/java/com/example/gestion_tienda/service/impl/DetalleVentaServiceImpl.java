@@ -80,7 +80,11 @@ public class DetalleVentaServiceImpl implements DetalleVentaService {
                             .orElseThrow(() -> new RuntimeException("NO EXISTE DICHA VENTA"));
                     Producto p = productoRepository.findById(dato.getProducto().getId())
                             .orElseThrow(() -> new RuntimeException("NO EXISTE DICHO PRODUCTO"));
-                    return detalleVentaMapper.entidadADTO(dato, productoMapper.entidadADTO(p), ventaMapper.entidadADTO(v));
+                    return detalleVentaMapper.entidadADTO(
+                            dato,
+                            productoMapper.entidadADTO(p),
+                            ventaMapper.entidadADTO(v)
+                    );
                 })
                 .toList();
     }
@@ -104,7 +108,11 @@ public class DetalleVentaServiceImpl implements DetalleVentaService {
                             .orElseThrow(() -> new RuntimeException("NO EXISTE DICHA VENTA"));
                     Producto p = productoRepository.findById(dato.getProducto().getId())
                             .orElseThrow(() -> new RuntimeException("NO EXISTE DICHO PRODUCTO"));
-                    return detalleVentaMapper.entidadADTO(dato, productoMapper.entidadADTO(p), ventaMapper.entidadADTO(v));
+                    return detalleVentaMapper.entidadADTO(
+                            dato,
+                            productoMapper.entidadADTO(p),
+                            ventaMapper.entidadADTO(v)
+                    );
                 })
                 .toList();
     }

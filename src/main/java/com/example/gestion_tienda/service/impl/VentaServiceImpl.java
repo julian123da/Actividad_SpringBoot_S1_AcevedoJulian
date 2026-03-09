@@ -61,5 +61,4 @@ public class VentaServiceImpl implements VentaService {
                 .orElseThrow(() -> new RuntimeException("No existe la venta con el id: " + id));
         return ventaMapper.entidadADTO(v);
     }
-
 }

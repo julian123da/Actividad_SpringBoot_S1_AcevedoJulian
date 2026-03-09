@@ -6,6 +6,7 @@ import com.example.gestion_tienda.mapper.ProductoMapper;
 import com.example.gestion_tienda.modelo.Producto;
 import com.example.gestion_tienda.repository.ProductoRepository;
 import com.example.gestion_tienda.service.ProductoService;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +29,7 @@ public class ProductoServiceImpl implements ProductoService {
     @Override
     public ProductoResponseDTO actualizarProducto(ProductoRequestDTO dto, Long id) {
         Producto p = productoRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("No existe el producto con el id: " + id));
+                .orElseThrow(() -> new EntityNotFoundException("No existe el producto con el id: " + id));
         productoMapper.actualizarEntidadDesdeDTO(p, dto);
         Producto p_actualizado = productoRepository.save(p);
         return productoMapper.entidadADTO(p_actualizado);
@@ -54,6 +55,5 @@ public class ProductoServiceImpl implements ProductoService {
                 .orElseThrow(() -> new RuntimeException("No existe el producto con el id: " + id));
         return productoMapper.entidadADTO(p);
     }
-
 
 }
